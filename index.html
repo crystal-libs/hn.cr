@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Crystal Docs 1.2.2">
+<meta name="crystal_docs.project_version" content="master">
+<meta name="crystal_docs.project_name" content="hn">
+
+
+
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/doc.js"></script>
+
+  <meta name="repository-name" content="hn">
+  <title>hn master</title>
+  <script type="text/javascript">
+  CrystalDocs.base_path = "";
+  </script>
+</head>
+<body>
+
+<svg class="hidden">
+  <symbol id="octicon-link" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+  </symbol>
+</svg>
+<div class="sidebar">
+  <div class="sidebar-header">
+    <div class="search-box">
+      <input type="search" class="search-input" placeholder="Search..." spellcheck="false" aria-label="Search">
+    </div>
+
+    <div class="project-summary">
+      <h1 class="project-name">
+        <a href="index.html">
+          hn
+        </a>
+      </h1>
+
+      <span class="project-version">
+        master
+      </span>
+    </div>
+  </div>
+
+  <div class="search-results hidden">
+    <ul class="search-list"></ul>
+  </div>
+
+  <div class="types-list">
+    <ul>
+  
+  <li class="parent " data-id="hn/HN" data-name="hn">
+      <a href="HN.html">HN</a>
+      
+        <ul>
+  
+  <li class=" " data-id="hn/HN/HackerNews" data-name="hn::hackernews">
+      <a href="HN/HackerNews.html">HackerNews</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+  </div>
+</div>
+
+
+<div class="main-content">
+<h1><a id="hn.cr" class="anchor" href="#hn.cr">  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>hn.cr</h1>
+<p><a href="https://github.com/trollmao/hn/releases"><img src="https://img.shields.io/github/release/trollmao/hn.svg" alt="GitHub release" /></a> <a href="https://trollmao.github.io/hn.cr"><img src="https://img.shields.io/badge/docs-available-brightgreen.svg" alt="Docs" /></a></p>
+<p><strong><a href="https://github.com/HackerNews/API">Hacker News API</a> wrapper written in <a href="https://github.com/crystal-lang/crystal">Crystal</a></strong></p>
+<p>All functions return JSON</p>
+<h2><a id="installation" class="anchor" href="#installation">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Installation</h2>
+<ol>
+<li>
+<p>Add the dependency to your <code>shard.yml</code>:</p>
+<pre><code class="language-yaml">dependencies:
+  hn:
+    github: trollmao/hn</code></pre>
+</li>
+<li>
+<p>Run <code>shards install</code></p>
+</li>
+</ol>
+<h2><a id="usage" class="anchor" href="#usage">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Usage</h2>
+<h3><a id="require-the-module-set-user-agent" class="anchor" href="#require-the-module-set-user-agent">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Require the module, set user agent:</h3>
+<pre><code class="language-crystal"><span class="k">require</span> <span class="s">&quot;hn&quot;</span>
+
+user_agent <span class="o">=</span> <span class="s">&quot;[description]:[version] by @[username]&quot;</span>
+hn <span class="o">=</span> <span class="t">HN</span><span class="t">::</span><span class="t">HackerNews</span>.<span class="k">new</span>(user_agent)</code></pre>
+<h3><a id="get-an-item" class="anchor" href="#get-an-item">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Get an item:</h3>
+<pre><code class="language-crystal">hn.item(<span class="s">&quot;1&quot;</span>)
+<span class="c">#{&quot;by&quot; =&gt; &quot;pg&quot;, &quot;descendants&quot; =&gt; 15, &quot;id&quot; =&gt; 1, &quot;kids&quot; =&gt; [15, 234509, 487171, 454426, 454424, 454410, 82729], &quot;score&quot; =&gt; 57, &quot;time&quot; =&gt; 1160418111, &quot;title&quot; =&gt; &quot;Y Combinator&quot;, &quot;type&quot; =&gt; &quot;story&quot;, &quot;url&quot; =&gt; &quot;http://ycombinator.com&quot;}</span></code></pre>
+<h3><a id="get-a-user" class="anchor" href="#get-a-user">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Get a user:</h3>
+<pre><code class="language-crystal">hn.user(<span class="s">&quot;test&quot;</span>)
+<span class="c">#{&quot;about&quot; =&gt; &quot;&quot;, &quot;created&quot; =&gt; 1175289467, &quot;delay&quot; =&gt; 0, &quot;id&quot; =&gt; &quot;test&quot;, &quot;karma&quot; =&gt; 1, &quot;submitted&quot; =&gt; [1043201, 1029445, 1026445, 586568, 418362, 418361, 11780]}</span></code></pre>
+<h3><a id="get-the-max-item" class="anchor" href="#get-the-max-item">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Get the max item:</h3>
+<pre><code class="language-crystal">hn.max_item
+<span class="c">#29832636</span></code></pre>
+<h3><a id="get-stories" class="anchor" href="#get-stories">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Get stories:</h3>
+<p>The function takes a required <code>kind</code> argument. It must be one of the following:</p>
+<ul>
+<li>&quot;new&quot;</li>
+<li>&quot;top&quot;</li>
+<li>&quot;best&quot;</li>
+<li>&quot;ask&quot;</li>
+<li>&quot;show&quot;</li>
+<li>&quot;job&quot;</li>
+</ul>
+<pre><code class="language-crystal">hn.get_stories(kind<span class="o">=</span><span class="s">&quot;ask&quot;</span>)
+<span class="c">#[29830770, 29826725, 29830214, 29825080, 29825844, ...]</span></code></pre>
+<h3><a id="get-changed-items" class="anchor" href="#get-changed-items">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Get changed items:</h3>
+<pre><code class="language-crystal">hn.changed_items
+<span class="c">#[29831564, 29832264, 29832633, 29832087, 29825303, ...]</span></code></pre>
+<h3><a id="get-changed-profiles" class="anchor" href="#get-changed-profiles">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Get changed profiles:</h3>
+<pre><code class="language-crystal">hn.changed_profiles
+<span class="c">#[&quot;throwawayboise&quot;, &quot;givemeethekeys&quot;, &quot;jorts&quot;, &quot;vasco&quot;, &quot;podge&quot;, ...]</span></code></pre>
+<h2><a id="development" class="anchor" href="#development">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Development</h2>
+<p><span class="flag orange">TODO</span>  Write development instructions here</p>
+<h2><a id="contributing" class="anchor" href="#contributing">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Contributing</h2>
+<ol>
+<li>Fork it (<a href="https://github.com/trollmao/hn/fork">https://github.com/trollmao/hn/fork</a>)</li>
+<li>Create your feature branch (<code>git checkout -b my-new-feature</code>)</li>
+<li>Commit your changes (<code>git commit -am 'Add some feature'</code>)</li>
+<li>Push to the branch (<code>git push origin my-new-feature</code>)</li>
+<li>Create a new Pull Request</li>
+</ol>
+<h2><a id="contributors" class="anchor" href="#contributors">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Contributors</h2>
+<ul>
+<li><a href="https://github.com/trollmao">trollmao</a> - creator and maintainer</li>
+</ul>
+</div>
+</body>
+</html>
