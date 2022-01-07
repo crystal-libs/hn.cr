@@ -1,6 +1,10 @@
-# hn
+# hn.cr
 
-TODO: Write a description here
+[![GitHub release](https://img.shields.io/github/release/trollmao/hn.svg)](https://github.com/trollmao/hn/releases) [![Docs](https://img.shields.io/badge/docs-available-brightgreen.svg)](https://trollmao.github.io/hn.cr)
+
+**[Hacker News API](https://github.com/HackerNews/API) wrapper written in [Crystal](https://github.com/crystal-lang/crystal)**
+
+All functions return JSON
 
 ## Installation
 
@@ -9,18 +13,71 @@ TODO: Write a description here
    ```yaml
    dependencies:
      hn:
-       github: your-github-user/hn
+       github: trollmao/hn
    ```
 
 2. Run `shards install`
 
 ## Usage
 
+### Require the module, set user agent:
+
 ```crystal
 require "hn"
+
+user_agent = "[description]:[version] by @[username]"
+hn = HN::HackerNews.new(user_agent)
 ```
 
-TODO: Write usage instructions here
+### Get an item:
+
+```crystal
+hn.item("1")
+#{"by" => "pg", "descendants" => 15, "id" => 1, "kids" => [15, 234509, 487171, 454426, 454424, 454410, 82729], "score" => 57, "time" => 1160418111, "title" => "Y Combinator", "type" => "story", "url" => "http://ycombinator.com"}
+```
+    
+### Get a user:
+
+```crystal
+hn.user("test")
+#{"about" => "", "created" => 1175289467, "delay" => 0, "id" => "test", "karma" => 1, "submitted" => [1043201, 1029445, 1026445, 586568, 418362, 418361, 11780]}
+```
+### Get the max item:
+
+```crystal
+hn.max_item
+#29832636
+```
+
+### Get stories:
+
+The function takes a required `kind` argument. It must be one of the following:
+
+- "new"
+- "top"
+- "best"
+- "ask"
+- "show"
+- "job"
+
+```crystal
+hn.get_stories(kind="ask")
+#[29830770, 29826725, 29830214, 29825080, 29825844, ...]
+```
+
+### Get changed items:
+
+```crystal
+hn.changed_items
+#[29831564, 29832264, 29832633, 29832087, 29825303, ...]
+```
+
+### Get changed profiles:
+
+```crystal
+hn.changed_profiles
+#["throwawayboise", "givemeethekeys", "jorts", "vasco", "podge", ...]
+```
 
 ## Development
 
@@ -28,7 +85,7 @@ TODO: Write development instructions here
 
 ## Contributing
 
-1. Fork it (<https://github.com/your-github-user/hn/fork>)
+1. Fork it (<https://github.com/trollmao/hn/fork>)
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
@@ -36,4 +93,4 @@ TODO: Write development instructions here
 
 ## Contributors
 
-- [trollmao](https://github.com/your-github-user) - creator and maintainer
+- [trollmao](https://github.com/trollmao) - creator and maintainer
