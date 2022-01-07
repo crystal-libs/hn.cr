@@ -1,0 +1,9 @@
+name: hn
+version: 0.1.0
+
+authors:
+  - trollmao <trollmao@protonmail.com>
+
+crystal: 1.3.0
+
+license: MIT
